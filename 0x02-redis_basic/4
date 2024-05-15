@@ -1,0 +1,25 @@
+
+
+
+
+
+cache_expiration = 10  # Seconds
+
+
+def access_counter(url):
+    cache_key = f"count:{url}"
+    if cache_key not in cache:
+        cache[cache_key] = 0
+    cache[cache_key] += 1
+
+
+def cache_decorator(func):
+    def wrapper(url):
+        cache_key = f"{func.__name__}:{url}"
+
+        if (
+            cache_key in cache
+            and (current_time - cache[cache_key]["time"]).total_seconds()
+            < cache_expiration
+        ):
+
