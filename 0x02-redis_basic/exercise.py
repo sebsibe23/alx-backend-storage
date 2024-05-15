@@ -96,16 +96,14 @@ class Cache:
             return None
 
     def get(
-        self,
-        key: str,
-        fn: Callable = None,
-    ) -> Union[str, bytes, int, float]:
+            self,
+            key: str,
+            fn: Callable = None,
+            ) -> Union[str, bytes, int, float]:
         """Retrieves the value from a Redis data storage."""
-        try:
-            data = self._redis.get(key)
-            return fn(data) if fn is not None else data
-        except Exception:
-            return None
+
+        data = self._redis.get(key)
+        return fn(data) if fn is not None else data
 
     def get_str(self, key: str) -> str:
         """
