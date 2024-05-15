@@ -29,8 +29,8 @@ def data_cacher(method: Callable) -> Callable:
             redis_store.setex(f'result:{url}', 10, result)
             return result
         except Exception as e:
-            print(e)    
-     
+            print(e)
+
     return invoker
 
 
