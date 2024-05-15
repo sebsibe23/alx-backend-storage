@@ -116,8 +116,7 @@ def replay(fn: Callable) -> None:
 
         for fxn_input, fxn_output in zip(fxn_inputs, fxn_outputs):
             print(
-                f"{fxn_name}(*{fxn_input.decode('utf-8')}) ->
-                {fxn_output.decode('utf-8')}"
+                f"{fxn_name}(*{fxn_input.decode('utf-8')}) -> {fxn_output.decode('utf-8')}"
             )
     except Exception as e:
         print(f"Error: {e}")
